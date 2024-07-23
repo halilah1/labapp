@@ -1,6 +1,16 @@
 pipeline {
     agent none
     stages {
+	stages {
+        stage('Setup Git User') {
+            agent any
+            steps {
+                sh '''
+                    git config --global user.name "Siti Halilah Binte Rosley"
+                    git config --global user.email "2201274@sit.singaporetech.edu.sg"
+                '''
+            }
+        }
         stage('OWASP Dependency-Check') {
             agent any
             steps {
